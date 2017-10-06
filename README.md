@@ -13,7 +13,7 @@ How to install the plugin
 
 2. set up your instance in the tinyMCE.init method to use the plugin, like::
 
-  plugins : "... bootstrap-utils ..."
+  plugins : "... bootstraputils ..."
 
 3. set up your instance to use the buttons you want, for example::
 
