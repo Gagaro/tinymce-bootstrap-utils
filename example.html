@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+    <script src='bootstrap_utils/plugin.js'></script>
+    <script>
+      tinymce.init({
+          selector: '#mytextarea',
+          plugins: 'bootstrap-utils',
+          toolbar: 'bootstrap-collapse',
+          setup: function(editor) {
+              editor.on('change init', function (e){
+                  document.getElementById('result').innerHTML = editor.getContent({format: 'raw'});
+              });
+          }
+      });
+    </script>
+	</head>
+
+	<body>
+		<h1>TinyMCE Quick Start Guide</h1>
+    <form method="post">
+      <textarea id="mytextarea">Hello, World!</textarea>
+    </form>
+
+    <h2>Result</h2>
+    <div id="result"></div>
+	</body>
+</html>
+
