@@ -11,7 +11,7 @@ tinymce.PluginManager.add('bootstrap-utils', function(editor, url) {
     });
 
     editor.addButton('bootstrap-collapse', {
-        type: 'splitbutton',
+        type: 'menubutton',
         text: 'Collapse',
         icon: false,
         menu: [{
