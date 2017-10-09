@@ -1,6 +1,8 @@
 tinymce.PluginManager.requireLangPack('bootstrap-utils', 'fr_FR');
 
 tinymce.PluginManager.add('bootstraputils', function(editor, url) {
+    editor.contentCSS.push(url + '/plugin.css');
+    
     /* COLLAPSE */
     editor.on('init', function() {
         editor.formatter.register('bootstrap-collapse-div-format', {

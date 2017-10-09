@@ -1,0 +1,11 @@
+/* COLLAPSE */
+
+.collapse::before {
+    content: attr(id) ": ";
+    color:#aaa;
+    font-size:11px;
+}
+.collapse {
+    border-left: dotted #aaa 2px;
+    padding: 3px;
+}

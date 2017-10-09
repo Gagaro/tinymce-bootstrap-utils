@@ -9,7 +9,7 @@
     <script>
       tinymce.init({
           selector: '#mytextarea',
-          plugins: 'bootstrap-utils',
+          plugins: 'bootstraputils',
           toolbar: 'bootstrap-collapse',
           setup: function(editor) {
               editor.on('change init', function (e){
@@ -23,7 +23,15 @@
 	<body>
 		<h1>TinyMCE Quick Start Guide</h1>
     <form method="post">
-      <textarea id="mytextarea">Hello, World!</textarea>
+      <textarea id="mytextarea">
+          <p>Hello, World!</p>
+        <p>
+          <a href="#test" data-toggle="collapse"
+             aria-expanded="false" aria-controls="test"
+             data-mce-href="#test">Collapse</a>
+        </p>
+        <div id="test" class="collapse">Collapse container</div>
+      </textarea>
     </form>
 
     <h2>Result</h2>
