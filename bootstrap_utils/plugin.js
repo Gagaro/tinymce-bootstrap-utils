@@ -2,7 +2,7 @@ tinymce.PluginManager.requireLangPack('bootstrap-utils', 'fr_FR');
 
 tinymce.PluginManager.add('bootstraputils', function(editor, url) {
     editor.contentCSS.push(url + '/plugin.css');
-    
+
     /* COLLAPSE */
     editor.on('init', function() {
         editor.formatter.register('bootstrap-collapse-div-format', {
@@ -77,11 +77,34 @@ tinymce.PluginManager.add('bootstraputils', function(editor, url) {
                     onsubmit: function(e) {
                         var data = e.data;
 
-                        editor.undoManager.transact(function() {
-                            editor.focus();
-                            editor.formatter.apply('bootstrap-collapse-div-format', {identifier: data.identifier});
-                            editor.nodeChanged();
-                        });
+                        if (divElm) {
+                            if (data.identifier) {
+                                editor.undoManager.transact(function() {
+                                    editor.dom.setAttrib(divElm, 'id', data.identifier);
+                                    editor.nodeChanged();
+                                });
+                            } else {
+                                editor.undoManager.transact(function() {
+                                    while (divElm.firstChild) {
+                                        divElm.parentNode.insertBefore(divElm.firstChild, divElm);
+                                    }
+                                    editor.dom.remove(divElm);
+                                    editor.nodeChanged();
+                                });
+                            }
+                        } else if (data.identifier) {
+                            editor.undoManager.transact(function() {
+                                var div = editor.dom.create('div', {id: data.identifier, class: 'collapse'});
+                                var rng = editor.selection.getRng(true);
+
+                                rng.setStartBefore(rng.startContainer);
+                                rng.setEndAfter(rng.endContainer);
+
+                                div.appendChild(rng.extractContents());
+                                rng.insertNode(div);
+                                editor.nodeChanged();
+                            });
+                        }
                     }
                 });
             }
