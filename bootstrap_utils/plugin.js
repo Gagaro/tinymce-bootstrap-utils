@@ -12,6 +12,26 @@ tinymce.PluginManager.add('bootstraputils', function(editor, url) {
         });
     });
 
+    // FIXME It adds two paragraphs instead of one
+    // editor.on('keydown', function(e) {
+    //     var divElm = editor.dom.getParent(editor.selection.getNode(), 'div.collapse');
+    //
+    //     if (!divElm || e.keyCode !== 13 || tinymce.util.VK.metaKeyPressed(e)) {
+    //         return ;
+    //     }
+    //
+    //     if (divElm.textContent === "") {
+    //         // Change current node to a normal paragraph
+    //         e.preventDefault();
+    //         e.stopPropagation();
+    //         var paragraph = editor.dom.create('p');
+    //         paragraph.append(editor.dom.create('br', {'data-mce-bogus': '1'}));
+    //         editor.dom.replace(paragraph, divElm);
+    //         editor.selection.setNode(paragraph);
+    //         editor.nodeChanged();
+    //     }
+    // });
+
     editor.addButton('bootstrap-collapse', {
         type: 'menubutton',
         text: 'Collapse',

@@ -13,7 +13,8 @@
           toolbar: 'bootstrap-collapse',
           setup: function(editor) {
               editor.on('change init', function (e){
-                  document.getElementById('result').innerHTML = editor.getContent({format: 'raw'});
+                  document.getElementById('result').innerHTML = editor.getContent({format: 'html'});
+                  document.getElementById('code').textContent = editor.getContent({format: 'html'});
               });
           }
       });
@@ -36,6 +37,7 @@
 
     <h2>Result</h2>
     <div id="result"></div>
+    <div id="code"></div>
 	</body>
 </html>
 
